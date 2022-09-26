@@ -24,7 +24,7 @@ export interface CopyBlockProps {
   wrapLongLines: boolean;
 
   /** The onCopy function is called if the copy icon is clicked. This enables you to add a custom message that the code block is copied. */
-  onCopy: Function,
+  onCopy: Function;
 
   /** The language in which the code is written. [See LANGUAGES.md](https://github.com/rajinwonderland/react-code-blocks/blob/master/LANGUAGES.md) */
 
@@ -32,6 +32,8 @@ export interface CopyBlockProps {
   customStyle?: {};
   /** I know it's lazy, but I'll extend the interfaces later */
   [x: string]: any;
+
+  lineProps?: (lineNumber: number, isHighlighted: boolean) => any;
 }
 
 const Button = styled.button<CopyBlockProps>`

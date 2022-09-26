@@ -45,6 +45,13 @@ df.head(5)`
         language={language}
         theme={require('../src')[themes]}
         wrapLongLines={wrapLongLines}
+        lineProps={(lineNumber, isHighlighted) => ({
+          style: {
+            // opacity: isHighlighted ? 1 : 0.1,
+            display: isHighlighted ? 'block' : 'none',
+          },
+        })}
+        highlight="2"
         {...{ showLineNumbers, codeBlock }}
       />
     </div>

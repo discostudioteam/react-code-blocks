@@ -12,7 +12,7 @@ export interface CodeBlockProps {
   showLineNumbers?: boolean;
 
   /**startingLineNumber - if showLineNumbers is enabled the line numbering will start from here.**/
-  startingLineNumber :number;
+  startingLineNumber: number;
 
   /** A custom theme to be applied, implements the `CodeBlockTheme` interface. You can also pass pass a precomposed theme into here. For available themes. [See THEMES.md](https://github.com/rajinwonderland/react-code-blocks/blob/master/THEMES.md) */
   theme?: Theme;
@@ -39,6 +39,7 @@ export interface CodeBlockProps {
    * - To highlight multiple groups `highlight="1-5,7,10,15-20"`
    */
   highlight?: string;
+  lineProps: any;
 }
 
 const LANGUAGE_FALLBACK = 'text';
@@ -51,7 +52,7 @@ export default class CodeBlock extends PureComponent<CodeBlockProps, {}> {
   static defaultProps = {
     showLineNumbers: true,
     wrapLongLines: false,
-    startingLineNumber : 1,
+    startingLineNumber: 1,
     language: LANGUAGE_FALLBACK,
     theme: {},
     highlight: '',
@@ -100,7 +101,7 @@ export default class CodeBlock extends PureComponent<CodeBlockProps, {}> {
       },
       customStyle: this.props?.customStyle,
       showLineNumbers: this.props.showLineNumbers,
-      startingLineNumber : this.props.startingLineNumber ,
+      startingLineNumber: this.props.startingLineNumber,
       codeTagProps: {
         style: {
           ...codeContainerStyle,
@@ -113,9 +114,9 @@ export default class CodeBlock extends PureComponent<CodeBlockProps, {}> {
       },
       text: this.props.text.toString(),
       highlight: this.props.highlight,
-      wrapLongLines: this.props.wrapLongLines
+      wrapLongLines: this.props.wrapLongLines,
+      lineProps: this.props.lineProps,
     };
-
     return <Code {...props} />;
   }
 }
